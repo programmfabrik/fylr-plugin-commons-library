@@ -1,0 +1,15 @@
+plugin:
+  name: commons-library
+  version: 0.5
+  url: https://github.com/programmfabrik/fylr-plugin-commons-library
+  displayname:
+    de-DE: Commons-Library für CustomDataTypePlugins
+    en-US: Commons-Library for CustomDataTypePlugins
+  info:
+    de-DE: Stellt gemeinsam genutzte Funktionen für CustomDataTypePlugins zur Verfügung.
+    en-US: Provides shared functions for CustomDataTypePlugins.
+  l10n: l10n/commonsLibrary.csv
+  webfrontend:
+    url: commonsLibrary.js
+
+base_url_prefix: "webfrontend"
