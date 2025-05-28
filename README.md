@@ -10,7 +10,7 @@ This plugin provides shared functions for CustomDataTypePlugins. The installatio
 
 ## installation
 
-The latest version of this plugin can be found [here](https://github.com/programmfabrik/fylr-plugin-commons-library/releases/latest/download/commonsLibraryPlugin.zip).
+The latest version of this plugin can be found [here](https://github.com/programmfabrik/fylr-plugin-commons-library/releases/latest/download/commonsLibrary.zip).
 
 The ZIP can be downloaded and installed using the plugin manager, or used directly (recommended).
 
