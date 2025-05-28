@@ -1,8 +1,26 @@
+# ready-hook for non deterministic CustomDataTypeCommons-loading-order
+window.CustomDataTypeCommonsHook ?=
+  _ready: false
+  _callbacks: []
+  onReady: (cb) ->
+    if @._ready
+      try cb() catch e then console.error "Error in Plugin-Callback (immediately):", e
+    else
+      @._callbacks.push(cb)
+  triggerReady: ->
+    return if @._ready
+    @._ready = true
+    for cb in @._callbacks
+      try cb() catch e then console.error "Error inPlugin-Callback:", e
+    @._callbacks = []
+
+
 ###############################################################################
 # These common class is used by many custom-data-type-plugins
 ###############################################################################
 #
-# To prevent the code from ending up redundantly in bundle.js, it is delivered centrally as a plugin until another solution, such as webpack, exists.
+# To prevent the code from ending up redundantly in different versions in bundle.js, 
+#     it is delivered only once as a plugin until another solution, such as webpack, exists.
 #
 
 class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
@@ -668,7 +686,6 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
   #  if Object.keys(custom_settings).length == 0
   #    ['Ohne Optionen']
 
-
 class CustomDataTypeCommonFacetAsPlugin extends FieldFacet
 
   initOpts: ->
@@ -707,3 +724,6 @@ class CustomDataTypeCommonFacetAsPlugin extends FieldFacet
 
   __isAndButtonAvailable: ->
     return @_field.insideNested()
+
+# trigger the ready-hook
+window.CustomDataTypeCommonsHook.triggerReady()
