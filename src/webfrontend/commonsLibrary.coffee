@@ -1,20 +1,3 @@
-# ready-hook for non deterministic CustomDataTypeCommons-loading-order
-window.CustomDataTypeCommonsHook ?=
-  _ready: false
-  _callbacks: []
-  onReady: (cb) ->
-    if @._ready
-      try cb() catch e then console.error "Error in Plugin-Callback (immediately):", e
-    else
-      @._callbacks.push(cb)
-  triggerReady: ->
-    return if @._ready
-    @._ready = true
-    for cb in @._callbacks
-      try cb() catch e then console.error "Error inPlugin-Callback:", e
-    @._callbacks = []
-
-
 ###############################################################################
 # These common class is used by many custom-data-type-plugins
 ###############################################################################
@@ -724,6 +707,4 @@ class CustomDataTypeCommonFacetAsPlugin extends FieldFacet
 
   __isAndButtonAvailable: ->
     return @_field.insideNested()
-
-# trigger the ready-hook
-window.CustomDataTypeCommonsHook.triggerReady()
+    
