@@ -69,7 +69,7 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
 
   getFacet: (opts) ->
       opts.field = @
-      new CustomDataTypeCommonFacet(opts)
+      new CustomDataTypeCommonFacetAsPlugin(opts)
 
 
   # provide a sort function to sort your data
