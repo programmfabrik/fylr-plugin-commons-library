@@ -22,6 +22,8 @@ build: clean buildinfojson ## clean, compile, copy files to build folder
 				cp src/webfrontend/*.coffee src/tmp
 				cd src/tmp && coffee -b --compile ${COFFEE_FILES} # bare-parameter is obligatory!
 
+				cat src/thirdparty/geojson-extent.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
+				cat src/thirdparty/geo-viewport.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
 				cat src/tmp/commonsLibrary.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
 
 				cp package.json build/$(PLUGIN_NAME)/package.json
