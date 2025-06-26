@@ -38,6 +38,9 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
       else
           value = data[@name()].conceptName
 
+      if !data[@name()]?.conceptName
+        value = data[@name()]
+
       name: @nameLocalized()
       value: value
 
