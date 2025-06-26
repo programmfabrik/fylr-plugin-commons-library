@@ -33,12 +33,26 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
   getQueryFieldBadge: (data) =>
       if data["#{@name()}:unset"]
           value = $$("text.column.badge.without")
+      else if data["#{@name()}:has_value"]
+        value = $$("field.search.badge.has_value")
       else
           value = data[@name()]
 
       name: @nameLocalized()
       value: value
 
+  # returns a filter for the has_value filter
+  # this filter is used to find records, which have a value in this field
+  getHasValueFilter: (data, key=@name()) ->
+      if data[key+":has_value"]
+          filter =
+              type: "in"
+              fields: [ @fullName()+".conceptURI" ]
+              in: [ null ]
+              bool: "must_not"
+          filter._unnest = true
+          filter._has_value_filter = true
+          return filter 
 
   supportsStandard: ->
       true
@@ -112,11 +126,14 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
       if data[key+":unset"]
           filter =
               type: "in"
-              fields: [ @fullName()+".conceptName" ]
+              fields: [ @fullName()+".conceptURI" ]
               in: [ null ]
           filter._unnest = true
           filter._unset_filter = true
           return filter
+
+      else if data[key+":has_value"]
+        return @getHasValueFilter(data, key)
 
       filter = super(data, key)
       if filter
