@@ -30,13 +30,13 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
     false
 
   # returns a map for search tokens, containing name and value strings.
-  getQueryFieldBadge: (data) =>
+  getQueryFieldBadge: (data) ->
       if data["#{@name()}:unset"]
           value = $$("text.column.badge.without")
       else if data["#{@name()}:has_value"]
         value = $$("field.search.badge.has_value")
       else
-          value = data[@name()]
+          value = data[@name()].conceptName
 
       name: @nameLocalized()
       value: value
