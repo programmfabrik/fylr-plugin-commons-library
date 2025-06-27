@@ -32,13 +32,13 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
   # returns a map for search tokens, containing name and value strings.
   getQueryFieldBadge: (data) ->
       if data["#{@name()}:unset"]
-          value = $$("text.column.badge.without")
+        value = $$("text.column.badge.without")
       else if data["#{@name()}:has_value"]
         value = $$("field.search.badge.has_value")
       else
           value = data[@name()].conceptName
 
-      if !data[@name()]?.conceptName
+      if !data[@name()]?.conceptName && ! value 
         value = data[@name()]
 
       name: @nameLocalized()
@@ -368,7 +368,8 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
           else
             return CUI.util.isEmpty(data[@name(opts)]?.trim())
 
-      return not data[@name(opts)]?.conceptName
+      result = not data[@name(opts)]?.conceptName
+      return result
 
   #######################################################################
   # is called, when record is being saved by user
@@ -680,6 +681,9 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
     switch @getDataStatus(cdata)
       when "invalid"
         return $$("custom.data.type.commons.invalid_entry")
+      when "empty"
+        if @isRequired(data, top_level_data, opts)
+          return $$("data.column.check.required", field: @fullNameLocalized())
     return true
 
 
