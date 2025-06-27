@@ -625,9 +625,10 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
       layout.__initPane(options, 'center')
 
     # if deleted from another plugin, do NOT trigger, because that could lead in an endless loop
-    if ! opts.deleteDataFromPlugin
+    #if ! opts.deleteDataFromPlugin
       # did data change?
-      that.__setEditorFieldStatus(cdata, layout)
+
+    that.__setEditorFieldStatus(cdata, layout)
 
 
   #######################################################################
