@@ -186,12 +186,6 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
     that = @
     @.dotsButtonMenu = {}
     layout = {}
-
-    classNameForBurgerMenuButton = 'pluginDirectSelectEditSearch'
-    if ez5.version("6")
-      classNameForBurgerMenuButton = 'pluginDirectSelectEditSearchFylr'
-    else if ez5.version("5")
-      classNameForBurgerMenuButton = 'pluginDirectSelectEditSearch'
             
     # build layout for editor
     layout = new CUI.HorizontalLayout
@@ -205,7 +199,7 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
                   new CUI.Button
                     text: ''
                     icon: new CUI.Icon(class: "fa-ellipsis-v")
-                    class: classNameForBurgerMenuButton
+                    class: 'pluginDirectSelectEditSearchFylr'
                     # show "dots"-menu on click on 3 vertical dots
                     onClick: (e, dotsButton) =>
                       that.dotsButtonMenu = new CUI.Menu
@@ -690,9 +684,10 @@ class CustomDataTypeWithCommonsAsPlugin extends CustomDataType
 
   #######################################################################
   # zeige die gewählten Optionen im Datenmodell unter dem Button an
-  #getCustomDataOptionsInDatamodelInfo: (custom_settings) ->
-  #  if Object.keys(custom_settings).length == 0
-  #    ['Ohne Optionen']
+  getCustomDataOptionsInDatamodelInfo: (custom_settings) ->
+    tags = []
+        
+    tags
 
 class CustomDataTypeCommonFacetAsPlugin extends FieldFacet
 
