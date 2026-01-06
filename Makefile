@@ -2,7 +2,8 @@ ZIP_NAME ?= "commonsLibrary.zip"
 PLUGIN_NAME = "commons-library"
 
 # coffescript-files to compile
-COFFEE_FILES = commonsLibrary.coffee
+COFFEE_FILES = commonsLibrary.coffee \
+								CustomDataTypeCommonsColumnCSVImporterDestinationField.coffee
 
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
@@ -24,6 +25,7 @@ build: clean buildinfojson ## clean, compile, copy files to build folder
 
 				cat src/thirdparty/geojson-extent.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
 				cat src/thirdparty/geo-viewport.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
+				cat src/tmp/CustomDataTypeCommonsColumnCSVImporterDestinationField.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
 				cat src/tmp/commonsLibrary.js >> build/$(PLUGIN_NAME)/webfrontend/commonsLibrary.js
 
 				cp package.json build/$(PLUGIN_NAME)/package.json
