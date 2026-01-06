@@ -20,6 +20,22 @@ Github has an overview page to get a list of [all releases](https://github.com/p
 
 No configuration yet.
 
+## csv-importer-support
+
+CustomDataTypePlugins build with this library automatically support the csv-importer-field-value in the following ways:
+
+1. JSON object 
+~~~ 
+    {
+      "conceptName": "Erbsen",
+      "conceptURI": "http://vocab.getty.edu/tgn/7188765",
+      ...
+      ..
+    }
+    here conceptURI is mandatory, everything else optional
+~~~ 
+2. only URI as string
+3. combination of Name and URI in the format "Name@$@URI"
 ## sources
 
 The source code of this plugin is managed in a git repository at <https://github.com/programmfabrik/fylr-plugin-commons-library>.
