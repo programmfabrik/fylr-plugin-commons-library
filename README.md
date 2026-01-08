@@ -36,6 +36,9 @@ CustomDataTypePlugins build with this library automatically support the csv-impo
 ~~~ 
 2. only URI as string
 3. combination of Name and URI in the format "Name@$@URI"
+
+Ensure to use the plugin-update-mechanism after the csv-import to complete the fieldinformation.
+
 ## sources
 
 The source code of this plugin is managed in a git repository at <https://github.com/programmfabrik/fylr-plugin-commons-library>.
