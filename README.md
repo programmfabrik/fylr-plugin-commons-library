@@ -6,7 +6,14 @@ developers.
 
 # commons-library-plugin
 
-This plugin provides shared functions for CustomDataTypePlugins. The installation is obligatory for the use of many plugins.
+This plugin provides shared functions for the custom data type plugins. It does nothing on its
+own and needs no configuration — it only has to be installed for the plugins that build on it.
+
+Twelve plugins declare it as a dependency, so fylr installs it with them automatically:
+`custom-data-type-cerlthesaurus`, `custom-data-type-dante`, `custom-data-type-geonames`,
+`custom-data-type-georef`, `custom-data-type-getty`, `custom-data-type-gn250`,
+`custom-data-type-gnd`, `custom-data-type-goobi`, `custom-data-type-gvk`,
+`custom-data-type-iconclass`, `custom-data-type-nomisma` and `custom-data-type-tnadiscovery`.
 
 ## installation
 
