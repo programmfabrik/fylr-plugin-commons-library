@@ -1,0 +1,25 @@
+# Build configuration for fylr-build-plugin — the explicit build description.
+# Delivered files are listed here; "check" (runs with every build) warns when
+# a manifest reference is missing from the build folder.
+# All features: https://github.com/programmfabrik/fylr-build-plugin
+#
+# commonsLibrary.zip is the name this plugin has always published. fylr updates a
+# url plugin by re-fetching the url it stored at install time, so that name is
+# kept as an alias beside the repository-named asset — without it every
+# existing installation would stop updating, silently.
+#
+# NOTE: the vendored JS precedes the compiled CoffeeScript, which webfrontend.coffee1/js cannot express.
+
+server:
+  install:
+  - l10n/commonsLibrary.csv
+build:
+  bundles:
+  - out: webfrontend/commonsLibrary.js
+    sources:
+    - src/thirdparty/geojson-extent.js
+    - src/thirdparty/geo-viewport.js
+    - webfrontend/CustomDataTypeCommonsColumnCSVImporterDestinationField.coffee
+    - webfrontend/commonsLibrary.coffee
+  zip_aliases:
+  - commonsLibrary.zip
