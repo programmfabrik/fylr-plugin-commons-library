@@ -13,13 +13,15 @@
 server:
   install:
   - l10n/commonsLibrary.csv
-build:
+
+webfrontend:
   bundles:
-  - out: webfrontend/commonsLibrary.js
-    sources:
-    - src/thirdparty/geojson-extent.js
-    - src/thirdparty/geo-viewport.js
-    - webfrontend/CustomDataTypeCommonsColumnCSVImporterDestinationField.coffee
-    - webfrontend/commonsLibrary.coffee
-  zip_aliases:
-  - commonsLibrary.zip
+    - out: webfrontend/commonsLibrary.js
+      sources:
+      - src/thirdparty/geojson-extent.js
+      - src/thirdparty/geo-viewport.js
+      - webfrontend/CustomDataTypeCommonsColumnCSVImporterDestinationField.coffee
+      - webfrontend/commonsLibrary.coffee
+
+zip_aliases:
+- commonsLibrary.zip
